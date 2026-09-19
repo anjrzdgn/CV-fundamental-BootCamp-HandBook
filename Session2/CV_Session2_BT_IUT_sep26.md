@@ -94,16 +94,17 @@ Deployment / Integration
 35. [جمع‌بندی نهایی](#37-جمعبندی-نهایی)
 
 ---
-
 # 1. از مسئله تا مدل: نقشه مهندسی جلسه دوم
 
 یکی از اشتباه‌های رایج این است که پروژه بینایی ماشین را از انتخاب مدل شروع کنیم:
 
-```text
-"YOLO بزنیم؟"
-"CNN بزنیم؟"
-"Segmentation بهتر نیست؟"
-```
+
+&#x200F;"YOLO بزنیم؟"
+
+&#x200F;"CNN بزنیم؟"
+
+&#x200F;"Segmentation بهتر نیست؟"
+
 
 ولی سؤال اول باید این باشد:
 
@@ -214,9 +215,9 @@ Tracking
 
 ---
 
-# 4. Bounding Box را دقیق بفهمیم
+# &#x200F;4. Bounding Box را دقیق بفهمیم
 
-Bounding Box ساده یک مستطیل Axis-Aligned است. در یک تصویر دوبعدی معمولا دستگاه مختصات از گوشه بالا-چپ شروع می‌شود:
+&#x200F;Bounding Box ساده یک مستطیل Axis-Aligned است. در یک تصویر دوبعدی معمولا دستگاه مختصات از گوشه بالا-چپ شروع می‌شود:
 
 ```text
 (0,0) ───────────────→ x
@@ -246,7 +247,7 @@ xywh = x, y, width, height
   <img src="images/01-cv-task-lable5.png" alt="Computer Vision Tasks" width="100%">
 </p>
 
-## Tight Box یا Loose Box؟
+## Tight Box یا Loose Box?
 
 در کلاس درباره Boxهای گشاد و مماس صحبت شد. در Dataset واقعی باید **Annotation Policy** داشته باشیم.
 
@@ -264,8 +265,7 @@ xywh = x, y, width, height
 </p>
 
 ---
-
-# 5. Pascal VOC، COCO و YOLO چه فرقی دارند؟
+# &#x200F;5. Pascal VOC، COCO و YOLO چه فرقی دارند؟
 ## Pascal VOC
 
 Bounding Box معمولا به صورت:
@@ -292,7 +292,7 @@ xmin, ymin, xmax, ymax
 
 ## COCO Detection Format
 
-COCO از JSON استفاده می‌کند و Bounding Box به شکل زیر است:
+&#x200F;COCO از JSON استفاده می‌کند و Bounding Box به شکل زیر است:
 
 ```text
 [x, y, width, height]
@@ -334,7 +334,7 @@ class_id x_center y_center width height
 
 ---
 
-# 6. Normalization و تبدیل مختصات
+# &#x200F;6. Normalization و تبدیل مختصات
 چرا نرمالایز می‌کنیم لیبل‌ها رو و عددی بین 0 تا 1 هست، زیرا در تغییر اندازه تصویر، واحد پیکسل مناسب نیست و ممکن است جا بماند. فلذا همه چیز را تقسیم بر طول و عرض کل عکس می‌کنیم.
 فرض کنید اندازه تصویر:
 
@@ -428,11 +428,11 @@ def yolo_to_xyxy(x_center, y_center, width, height, image_width, image_height):
 
 ## یک نکته ظریف درباره Resize
 
-Normalized coordinate باعث می‌شود Label نسبت به ابعاد تصویر بیان شود. اگر فقط Resize یکنواخت انجام شود و Geometry تصویر حفظ شود، Mapping ساده باقی می‌ماند. ولی اگر Crop، Rotation، Perspective Transform یا Letterbox انجام دهید، Annotation باید همراه همان Transform به‌روز شود.
+&#x200F;Normalized coordinate باعث می‌شود Label نسبت به ابعاد تصویر بیان شود. اگر فقط Resize یکنواخت انجام شود و Geometry تصویر حفظ شود، Mapping ساده باقی می‌ماند. ولی اگر Crop، Rotation، Perspective Transform یا Letterbox انجام دهید، Annotation باید همراه همان Transform به‌روز شود.
 
 پس این جمله را به خاطر بسپارید:
 
-> **Normalization مشکل Scale را حل می‌کند، نه تمام Transformهای هندسی را.**
+> &#x200F;**Normalization مشکل Scale را حل می‌کند، نه تمام Transformهای هندسی را.**
 
 ---
 
@@ -454,7 +454,7 @@ class + bounding box
 
 ## OBB
 
-Box همراه Rotation.
+&#x200F;Box همراه Rotation.
 
 ## Polygon / Instance Segmentation
 
@@ -488,7 +488,7 @@ ankle
 
 در XR این نوع خروجی برای Body Tracking، Gesture و Interaction بسیار مهم است.
 
-## Segmentation چرا هزینه بیشتری دارد؟
+## &#x200F;Segmentation چرا هزینه بیشتری دارد؟
 
 رسم Bounding Box با چهار حرکت ساده تمام می‌شود. اما Polygon ممکن است ده‌ها نقطه داشته باشد. هرچه Object پیچیده‌تر، باریک‌تر یا مرز آن نامنظم‌تر باشد، Annotation زمان بیشتری می‌گیرد.
 
@@ -500,29 +500,29 @@ ankle
 
 یکی از مهم‌ترین چیزهایی که از کار تیمی باید یاد بگیریم این است:
 
-> **Consistency از تعداد خام Label مهم‌تر است.**
+> &#x200F;**Consistency از تعداد خام Label مهم‌تر است.**
 
 اگر پنج نفر Annotation می‌کنند، باید قبل از شروع یک Guide مشترک داشته باشند.
 
 ## نمونه Annotation Guide
 
-```text
+
 Class: red_balloon
 
-1. Box باید Tight باشد.
+1. &#x200F;Box باید Tight باشد.
 2. نخ بادکنک داخل Box حساب نشود.
 3. بادکنک‌های کمتر از 8×8 pixel لیبل نشوند.
 4. اگر بیش از 70 درصد Object پنهان است، لیبل نزنیم.
 5. اگر بخشی از Object بیرون Frame است، Box تا مرز Frame ادامه پیدا کند.
 6. بادکنک غیرقرمز با Class دیگری ثبت شود یا Ignore شود.
-7. Reflection روی شیشه Object مستقل حساب نشود.
-```
+7. &#x200F;Reflection روی شیشه Object مستقل حساب نشود.
+
 
 این Ruleها بسته به پروژه تغییر می‌کنند. مهم این است که نوشته شوند.
 
 ## مرحله QA
 
-Annotation تیمی بهتر است دو مرحله داشته باشد:
+&#x200F;Annotation تیمی بهتر است دو مرحله داشته باشد:
 
 ```text
 Annotator
@@ -532,15 +532,15 @@ Reviewer
 Approved Data
 ```
 
-Reviewer باید نمونه‌های زیر را پیدا کند:
+&#x200F;Reviewer باید نمونه‌های زیر را پیدا کند:
 
-- Boxهای خیلی گشاد؛
-- Objectهای جاافتاده؛
-- Class اشتباه؛
-- Labelهای خارج تصویر؛
+- &#x200F;Boxهای خیلی گشاد؛
+- &#x200F;Objectهای جاافتاده؛
+- &#x200F;Class اشتباه؛
+- &#x200F;Labelهای خارج تصویر؛
 - فایل‌های بدون Label غیرمنتظره؛
-- Duplicate Image؛
-- Annotation ناسازگار بین افراد.
+- &#x200F;Duplicate Image؛
+- &#x200F;Annotation ناسازگار بین افراد.
 
 ### تجربه پیشنهادی
 
@@ -591,7 +591,7 @@ python labelImg.py
 
 برای پروژه‌های جدی‌تر، Video Annotation، Polygon، Tracking Annotation، Keypoint و Workflow تیمی گزینه قدرتمندی است.
 
-CVAT را می‌توان با Docker اجرا کرد. Docker Desktop در Windows/macOS و Docker Engine در Linux می‌تواند میزبان آن باشد؛ بنابراین محدود به Linux نیست.
+&#x200F;CVAT را می‌توان با Docker اجرا کرد. Docker Desktop در Windows/macOS و Docker Engine در Linux می‌تواند میزبان آن باشد؛ بنابراین محدود به Linux نیست.
 
 ```bash
 git clone https://github.com/cvat-ai/cvat
@@ -626,34 +626,40 @@ docker compose up -d
 
 منابع مهم:
 
-- Roboflow Universe
-- Kaggle Datasets
-- Hugging Face Datasets
-- Google Dataset Search
-- COCO
-- Google Open Images
-- Papers with Code
-- GitHub Repositoryها
+- &#x200F;Roboflow Universe
+- &#x200F;Kaggle Datasets
+- &#x200F;Hugging Face Datasets
+- &#x200F;Google Dataset Search
+- &#x200F;COCO
+- &#x200F;Google Open Images
+- &#x200F;Papers with Code
+- &#x200F;GitHub Repositoryها
 - صفحه Supplementary مقاله‌ها
-- Datasetهای منتشرشده توسط دانشگاه‌ها و آزمایشگاه‌ها
+- &#x200F;Datasetهای منتشرشده توسط دانشگاه‌ها و آزمایشگاه‌ها
 - سایت‌هایی مثل PTO، ninja, etc.
+
 ## قبل از Download چه چیزی را ببینیم؟
 
-README، Sample Image و Label Preview را بررسی کنید.
-
+&#x200F;README، Sample Image و Label Preview را بررسی کنید.
 پرسش‌های مهم:
 
-```text
-آیا Classهای من را دارد؟
-آیا Label format مشخص است؟
-آیا کیفیت تصویر مناسب است؟
-آیا Data تکراری زیاد دارد؟
-آیا زاویه‌ها متنوع‌اند؟
-آیا License اجازه استفاده من را می‌دهد؟
-آیا Domain داده شبیه محیط واقعی من است؟
-```
 
-## Git LFS
+آیا Classهای من را دارد؟
+
+آیا Label format مشخص است؟
+
+آیا کیفیت تصویر مناسب است؟
+
+آیا Data تکراری زیاد دارد؟
+
+آیا زاویه‌ها متنوع‌اند؟
+
+آیا License اجازه استفاده من را می‌دهد؟
+
+آیا Domain داده شبیه محیط واقعی من است؟
+
+
+## &#x200F;Git LFS
 
 بعضی Repositoryهای GitHub فایل‌های بزرگ را با Git LFS نگه می‌دارند. در آن حالت Clone ساده ممکن است به جای فایل واقعی Pointer بگیرد. اگر Repository از LFS استفاده می‌کند، Git LFS را نصب و فعال کنید.
 
@@ -661,7 +667,7 @@ README، Sample Image و Label Preview را بررسی کنید.
 
 # 11. حریم خصوصی، License و Dataset Card
 
-Dataset فقط یک پوشه عکس نیست.
+&#x200F;Dataset فقط یک پوشه عکس نیست.
 
 اگر تصویر شامل:
 
@@ -679,19 +685,19 @@ Dataset فقط یک پوشه عکس نیست.
 
 ---
 
-# 12. Train، Validation، Test و Data Leakage
+# &#x200F;12. Train، Validation، Test و Data Leakage
 
 سه بخش را باید از نظر نقش جدا کنیم.
 
-## Train
+## &#x200F;Train
 
-Weightها با این داده Update می‌شوند.
+&#x200F;Weightها با این داده Update می‌شوند.
 
-## Validation
+## &#x200F;Validation
 
 برای ارزیابی حین توسعه، انتخاب Hyperparameter، Early Stopping و بررسی Overfitting استفاده می‌شود.
 
-## Test
+## &#x200F;Test
 
 برای ارزیابی نهایی و بی‌طرفانه استفاده می‌شود.
 
@@ -782,7 +788,7 @@ for split_name, split_images in splits.items():
 
 ---
 
-# 13. K-Fold Cross Validation
+# &#x200F;13. K-Fold Cross Validation
 
 اگر Dataset کوچک باشد، یک Split ثابت ممکن است به شانس حساس باشد.
 
@@ -799,8 +805,8 @@ Fold 5: [T | T | T | T | V]
 هر بخش یک بار Validation و چهار بار Train می‌شود.
 
 > [!IMPORTANT]
-> 1. `K` مجبور نیست عدد فرد باشد. 5 و 10 انتخاب‌های رایج‌اند، ولی K می‌تواند عددهای دیگری هم باشد.
-> 2. Fold معمولا در **Training Runهای جدا** می‌چرخد، نه اینکه Validation Fold در هر Epoch همان Run عوض شود.
+> 1. &#x200F;`K` مجبور نیست عدد فرد باشد. 5 و 10 انتخاب‌های رایج‌اند، ولی K می‌تواند عددهای دیگری هم باشد.
+> 2. &#x200F;Fold معمولا در **Training Runهای جدا** می‌چرخد، نه اینکه Validation Fold در هر Epoch همان Run عوض شود.
 
 ## نمونه با scikit-learn
 
@@ -827,7 +833,7 @@ for fold, (train_idx, val_idx) in enumerate(kf.split(files), start=1):
 
 ## چه زمانی K-Fold ارزش دارد؟
 
-- Dataset کوچک؛
+- &#x200F;Dataset کوچک؛
 - مقاله و Benchmark؛
 - مقایسه دو Model؛
 - وقتی نگران هستید نتیجه Split تصادفی باشد.
@@ -837,8 +843,9 @@ for fold, (train_idx, val_idx) in enumerate(kf.split(files), start=1):
 <p align="center">
   <img src="images/06-kfold.webp" alt="Computer Vision Tasks" width="100%">
 </p>
+
 البته در این تصویر، test همان تستی است که در هر ایپاک انجام می‌شود و معنی همان val می‌دهد.
----
+
 
 # 14. ساختار پوشه Dataset و data.yaml
 
@@ -892,7 +899,7 @@ names: ["cat", "dog"]
 
 ---
 
-# 15. Dataset Audit: قبل از Train چه چیزهایی را چک کنیم؟
+# &#x200F;15. Dataset Audit: قبل از Train چه چیزهایی را چک کنیم؟
 
 قبل از اینکه GPU را ساعت‌ها درگیر کنید، Dataset را Audit کنید.
 
@@ -901,14 +908,13 @@ names: ["cat", "dog"]
 - [ ] هر Image فایل Label متناظر دارد یا دلیل مشخصی برای Empty Label وجود دارد
 - [ ] همه `class_id`ها معتبرند
 - [ ] همه مختصات YOLO بین 0 و 1 هستند
-- [ ] width و height مثبت‌اند
+- [ ] &#x200F;width و height مثبت‌اند
 - [ ] فایل خراب وجود ندارد
-- [ ] Duplicate زیاد نداریم
-- [ ] Class imbalance شدید بررسی شده
+- [ ] &#x200F;Duplicate زیاد نداریم
+- [ ] &#x200F;Class imbalance شدید بررسی شده
 - [ ] تصاویر بسیار تار یا اشتباه حذف شده‌اند
-- [ ] Train/Val/Test Leakage ندارند
-- [ ] Annotation Policy یکسان است
-
+- [ ] &#x200F;Train/Val/Test Leakage ندارند
+- [ ] &#x200F;Annotation Policy یکسان است
 ## اسکریپت ساده بررسی Labelهای YOLO
 
 ```python
@@ -953,9 +959,9 @@ for error in errors[:20]:
 
 ---
 
-# 16. Data Augmentation هدفمند
+# &#x200F;16. Data Augmentation هدفمند
 
-Augmentation برای ساخت تنوع مصنوعی است، نه ساخت داده جعلی بی‌منطق.
+&#x200F;Augmentation برای ساخت تنوع مصنوعی است، نه ساخت داده جعلی بی‌منطق.
 
 نمونه‌ها:
 
@@ -974,7 +980,7 @@ Augmentation برای ساخت تنوع مصنوعی است، نه ساخت دا
 | MixUp | ترکیب دو Sample |
 | Random Erasing | شبیه‌سازی Occlusion |
 
-## Augmentation باید Domain-aware باشد
+## &#x200F;Augmentation باید Domain-aware باشد
 
 اگر قرار است Text یا تابلو را بخوانید، Flip ممکن است معنی را خراب کند.
 
@@ -1047,11 +1053,11 @@ Edges
 
 ## Neck
 
-Featureهای مقیاس‌های مختلف را ترکیب می‌کند. این موضوع برای تشخیص Object کوچک و بزرگ در یک تصویر مهم است.
+&#x200F;Featureهای مقیاس‌های مختلف را ترکیب می‌کند. این موضوع برای تشخیص Object کوچک و بزرگ در یک تصویر مهم است.
 
 ## Head
 
-Prediction نهایی Detection را تولید می‌کند.
+&#x200F;Prediction نهایی Detection را تولید می‌کند.
 
  از مدل‌های Nano، Small، Medium، Large و Extra Large صحبت شد. ایده Scaling مهم است:
 
@@ -1061,18 +1067,18 @@ n < s < m < l < x
 
 معمولا مدل کوچک‌تر:
 
-- Parameter کمتر؛
-- Memory کمتر؛
-- Inference سریع‌تر؛
+- &#x200F;Parameter کمتر؛
+- &#x200F;Memory کمتر؛
+- &#x200F;Inference سریع‌تر؛
 - گاهی Accuracy پایین‌تر.
 
 و مدل بزرگ‌تر عکس این Trade-off را دارد.
 <p align="center">
   <img src="images/08-yolo-backbone-neck-head.webp" alt="Computer Vision Tasks" width="100%">
 </p>
----
 
-# 18. Training عمیق‌تر: Epoch، Batch، Iteration، Optimizer و Learning Rate
+
+# &#x200F;18. Training عمیق‌تر: Epoch، Batch، Iteration، Optimizer و Learning Rate
 
 از جلسه اول:
 
@@ -1125,7 +1131,7 @@ Batch size   = 32
 
 ## Optimizer
 
-Gradient می‌گوید تغییر پارامتر در چه جهتی Loss را تغییر می‌دهد. Optimizer تصمیم می‌گیرد Weightها چگونه Update شوند.
+&#x200F;Gradient می‌گوید تغییر پارامتر در چه جهتی Loss را تغییر می‌دهد. Optimizer تصمیم می‌گیرد Weightها چگونه Update شوند.
 
 نمونه‌ها:
 
@@ -1136,7 +1142,7 @@ Gradient می‌گوید تغییر پارامتر در چه جهتی Loss را 
 
 ## Learning Rate
 
-Step Size یادگیری است.
+&#x200F;Step Size یادگیری است.
 
 خیلی بزرگ:
 
@@ -1150,7 +1156,7 @@ Overshoot / Oscillation / Divergence
 Slow convergence
 ```
 
-## Early Stopping و Patience
+## &#x200F;Early Stopping و Patience
 
 اگر Metric هدف برای چند Epoch بهتر نشود، Training متوقف می‌شود.
 
@@ -1174,7 +1180,7 @@ model.train(
 
 ---
 
-# 19. Preprocess، Process، Postprocess و DataLoader
+# &#x200F;19. Preprocess، Process، Postprocess و DataLoader
 
 یک Pipeline ساده Inference:
 
@@ -1206,12 +1212,12 @@ Final Detections
 
 ## Process
 
-Forward Pass شبکه.
+&#x200F;Forward Pass شبکه.
 
 ## Postprocess
 
-- Confidence Threshold؛
-- NMS یا روش متناظر معماری؛
+- &#x200F;Confidence Threshold؛
+- &#x200F;NMS یا روش متناظر معماری؛
 - تبدیل Coordinate به Image Space؛
 - رسم Box و Label.
 
@@ -1221,13 +1227,13 @@ Forward Pass شبکه.
 
 یک تشبیه خوب:
 
-> DataLoader مثل آشپز کمکی است. وقتی GPU روی Batch فعلی کار می‌کند، CPU می‌تواند Batch بعدی را بخواند، Decode کند و آماده کند تا GPU منتظر نماند.
+> &#x200F;DataLoader مثل آشپز کمکی است. وقتی GPU روی Batch فعلی کار می‌کند، CPU می‌تواند Batch بعدی را بخواند، Decode کند و آماده کند تا GPU منتظر نماند.
 
 پارامتر `workers` به Parallel Data Loading کمک می‌کند، ولی بیشتر بودن همیشه بهتر نیست. Storage، CPU، RAM، OS و حجم Transformها روی مقدار مناسب اثر دارند.
 
 ---
 
-# 20. Resize، Letterbox و تعداد کانال‌ها
+# &#x200F;20. Resize، Letterbox و تعداد کانال‌ها
 
 ## چرا imgsz داریم؟
 
@@ -1250,11 +1256,11 @@ model.train(
 640×640
 ```
 
-Aspect Ratio تغییر می‌کند و Object کشیده می‌شود.
+&#x200F;Aspect Ratio تغییر می‌کند و Object کشیده می‌شود.
 
 ## Letterbox
 
-Aspect Ratio را حفظ می‌کند و Padding اضافه می‌کند.
+&#x200F;Aspect Ratio را حفظ می‌کند و Padding اضافه می‌کند.
 
 ```python
 import cv2
@@ -1294,14 +1300,14 @@ cv2.imwrite("letterbox.jpg", padded)
 
 ## سه کانال یا یک کانال؟
 
-RGB سه Channel دارد. X-ray یا Thermal ممکن است ذاتا تک‌Channel باشد.
+&#x200F;RGB سه Channel دارد. X-ray یا Thermal ممکن است ذاتا تک‌Channel باشد.
 
 برای Dataset رنگی معمولی، کم‌کردن کانال ورودی معمولا بهترین روش Optimization نیست. Weightهای Pretrained متداول با ورودی سه‌کاناله ساخته شده‌اند.
 
 دو مسیر داریم:
 
-1. Grayscale را به سه Channel تکرار کنیم و Compatibility مدل Pretrained را نگه داریم؛
-2. Architecture را واقعا برای یک Channel تغییر دهیم و Weightهای ورودی را متناسب سازگار یا Train کنیم.
+1. &#x200F;Grayscale را به سه Channel تکرار کنیم و Compatibility مدل Pretrained را نگه داریم؛
+2. &#x200F;Architecture را واقعا برای یک Channel تغییر دهیم و Weightهای ورودی را متناسب سازگار یا Train کنیم.
 
 برای کاهش Compute اغلب این کارها عملی‌ترند:
 
@@ -1379,7 +1385,7 @@ Precision = 90 / 100 = 0.90
 Recall    = 90 / 120 = 0.75
 ```
 
-## Trade-off با Confidence Threshold
+## &#x200F;Trade-off با Confidence Threshold
 
 اغلب:
 
@@ -1425,9 +1431,9 @@ IoU = Intersection Area / Union Area
 
 ## AP و mAP
 
-**AP** خلاصه‌ای از Precision-Recall برای یک Class است.
+&#x200F;**AP** خلاصه‌ای از Precision-Recall برای یک Class است.
 
-**mAP** میانگین AP روی Classها است.
+&#x200F;**mAP** میانگین AP روی Classها است.
 
 ### mAP50
 
@@ -1435,7 +1441,7 @@ IoU Threshold = 0.50.
 
 ### mAP50-95
 
-AP روی Thresholdهای زیر محاسبه و میانگین گرفته می‌شود:
+&#x200F;AP روی Thresholdهای زیر محاسبه و میانگین گرفته می‌شود:
 
 ```text
 0.50, 0.55, 0.60, ..., 0.95
@@ -1447,15 +1453,15 @@ AP روی Thresholdهای زیر محاسبه و میانگین گرفته می�
 
 # 22. تمرین تکمیلی: آموزش مدل 
 
-## Dataset خوب چه ویژگی‌ای دارد؟
+## &#x200F;Dataset خوب چه ویژگی‌ای دارد؟
 
 صرفا «عکس زیاد» کافی نیست. Dataset باید تنوع مسئله واقعی را پوشش دهد:
 
 - زاویه‌های مختلف
 - نورهای مختلف
-- Backgroundهای مختلف
+- &#x200F;Backgroundهای مختلف
 - فاصله و Scale مختلف
-- Occlusion
+- &#x200F;Occlusion
 - دوربین‌های مختلف
 - نمونه‌های مثبت و منفی مناسب
 
@@ -1465,13 +1471,13 @@ AP روی Thresholdهای زیر محاسبه و میانگین گرفته می�
 
 برای مدل خوب فقط Training کافی نیست. بعد از Training این سؤال‌ها را جواب بدهید:
 
-```text
+
 کدام Class بیشترین FN را دارد؟
 کدام Scene بیشترین FP را می‌سازد؟
 Object کوچک مشکل دارد یا بزرگ؟
 شب مشکل داریم یا روز؟
 آیا یک Background خاص Model را گول می‌زند؟
-```
+
 
 این مرحله **Error Analysis** است و از زیادکردن کورکورانه Epoch مهم‌تر است.
 
@@ -1515,10 +1521,10 @@ all        150         410      0.842   0.771    0.812      0.634
 
 ## dfl_loss
 
-**Distribution Focal Loss** برای Bounding Box Regression استفاده می‌شود و به نمایش توزیعی فاصله مرزهای Box کمک می‌کند.
+&#x200F;**Distribution Focal Loss** برای Bounding Box Regression استفاده می‌شود و به نمایش توزیعی فاصله مرزهای Box کمک می‌کند.
 
 > [!IMPORTANT]
->`dfl_loss` به عنوان معیار تشخیص Edge ثبت شده گفته می‌شود. ارتباط آن با دقیق‌تر شدن مرز Box قابل فهم است، ولی DFL یک Edge Detector مثل Canny نیست. این یک Loss برای Box Regression است.
+>&#x200F;`dfl_loss` به عنوان معیار تشخیص Edge ثبت شده گفته می‌شود. ارتباط آن با دقیق‌تر شدن مرز Box قابل فهم است، ولی DFL یک Edge Detector مثل Canny نیست. این یک Loss برای Box Regression است.
 
 ## Instances
 
@@ -1532,15 +1538,15 @@ all        150         410      0.842   0.771    0.812      0.634
 
 ## Box(P)
 
-Precision.
+&#x200F;Precision.
 
 ## R
 
-Recall.
+&#x200F;Recall.
 
 ## mAP50 و mAP50-95
 
-Metrics بخش قبلی.
+&#x200F;Metrics بخش قبلی.
 
 ## روند سالم چه شکلی است؟
 
@@ -1771,7 +1777,7 @@ model.train(patience=15)
 
 هدف:
 
-> Detection یک بادکنک در Video و تولید Error Signal برای حرکت Camera/Gimbal تا Object نزدیک مرکز Frame بماند.
+> &#x200F;Detection یک بادکنک در Video و تولید Error Signal برای حرکت Camera/Gimbal تا Object نزدیک مرکز Frame بماند.
 
 Pipeline:
 
@@ -1838,7 +1844,7 @@ def command_from_error(error_x, error_y, dead_zone=20):
     return command_x, command_y
 ```
 
-## Distance Estimation ساده
+## &#x200F;Distance Estimation ساده
 
 اگر عرض واقعی Object و Focal Length کالیبره‌شده را بدانیم:
 
@@ -1928,7 +1934,7 @@ print("Inside danger zone:", inside)
 
 # 28. پروژه عملی ۳: Line Crossing و Tracking با ByteTrack
 
-Detection به تنهایی ID ندارد.
+&#x200F;Detection به تنهایی ID ندارد.
 
 اگر Person در ده Frame دیده شود، ده Detection داریم. Tracking تلاش می‌کند بگوید:
 
@@ -1979,23 +1985,23 @@ ID 7: current side  = right
 
 1. آیا Model آماده وجود دارد؟
 2. آیا Dataset مناسب وجود دارد؟
-3. Dataset چه License دارد؟
+3. &#x200F;Dataset چه License دارد؟
 4. آیا Consent لازم وجود دارد؟
-5. Label Emotion چقدر Subjective است؟
-6. Classها Balanced هستند؟
+5. &#x200F;Label Emotion چقدر Subjective است؟
+6. &#x200F;Classها Balanced هستند؟
 7. آیا Domain Bias داریم؟
 
-Emotion Recognition مثال خوبی است که نشان می‌دهد «داشتن Image و Label» به تنهایی کافی نیست. تعریف Ground Truth ممکن است خودش مبهم باشد.
+&#x200F;Emotion Recognition مثال خوبی است که نشان می‌دهد «داشتن Image و Label» به تنهایی کافی نیست. تعریف Ground Truth ممکن است خودش مبهم باشد.
 
 برای پروژه‌های چهره باید حریم خصوصی، رضایت، Bias و کاربرد نهایی جدی گرفته شود.
 
 ---
 
-# 30. TensorRT، Export و Deployment
+# &#x200F;30. TensorRT، Export و Deployment
 
-Training پایان پروژه نیست.
+&#x200F;Training پایان پروژه نیست.
 
-Model باید در محیط هدف اجرا شود.
+&#x200F;Model باید در محیط هدف اجرا شود.
 
 ممکن است Target شما باشد:
 
@@ -2007,9 +2013,9 @@ Model باید در محیط هدف اجرا شود.
 - Unity Application؛
 - XR Pipeline.
 
-## TensorRT چیست؟
+## &#x200F;TensorRT چیست؟
 
-TensorRT یک Runtime و Optimization Toolkit از NVIDIA برای Inference روی سخت‌افزار NVIDIA است.
+&#x200F;TensorRT یک Runtime و Optimization Toolkit از NVIDIA برای Inference روی سخت‌افزار NVIDIA است.
 
 در Workflow مناسب می‌تواند:
 
@@ -2030,7 +2036,7 @@ model.export(format="engine")
 ```
 
 > [!NOTE]
-> Export به TensorRT به Environment سازگار NVIDIA/TensorRT نیاز دارد. قبل از Deployment، Accuracy بعد از Export را دوباره Validation کنید.
+> &#x200F;Export به TensorRT به Environment سازگار NVIDIA/TensorRT نیاز دارد. قبل از Deployment، Accuracy بعد از Export را دوباره Validation کنید.
 
 ## برای XR چه می‌شود؟
 
@@ -2050,7 +2056,7 @@ Unity / Unreal
 Interaction or Overlay
 ```
 
-Latency اینجا حیاتی است. Model عالی با 500 ms Delay ممکن است برای Interaction بلادرنگ مناسب نباشد.
+&#x200F;Latency اینجا حیاتی است. Model عالی با 500 ms Delay ممکن است برای Interaction بلادرنگ مناسب نباشد.
 
 ---
 
@@ -2084,7 +2090,7 @@ Latency اینجا حیاتی است. Model عالی با 500 ms Delay ممکن 
 
 در جزوه پیشنهاد شده بود Datasetهای با Score بالاتر را بیشتر وارد Train کنیم. این کار باید با احتیاط انجام شود.
 
-Score بهتر است ابتدا برای:
+&#x200F;Score بهتر است ابتدا برای:
 
 - اولویت QA؛
 - حذف Data خراب؛
@@ -2120,78 +2126,78 @@ print(torch.cuda.is_available())
 
 بررسی کنید:
 
-- NVIDIA GPU دارید؟
-- Driver درست است؟
-- PyTorch GPU build نصب شده؟
-- Environment درست فعال است؟
+- &#x200F;NVIDIA GPU دارید؟
+- &#x200F;Driver درست است؟
+- &#x200F;PyTorch GPU build نصب شده؟
+- &#x200F;Environment درست فعال است؟
 
 ## CUDA Out of Memory
 
 راهکار:
 
-- Batch کمتر؛
-- ImgSize کمتر؛
-- Model کوچک‌تر؛
+- &#x200F;Batch کمتر؛
+- &#x200F;ImgSize کمتر؛
+- &#x200F;Model کوچک‌تر؛
 - برنامه‌های GPU دیگر را ببندید.
 
-## Training خیلی کند است
+## &#x200F;Training خیلی کند است
 
 بررسی کنید:
 
-- CPU bottleneck؛
-- HDD کند؛
-- workers؛
-- GPU usage؛
-- Image decoding؛
-- Augmentation سنگین.
+- &#x200F;CPU bottleneck؛
+- &#x200F;HDD کند؛
+- &#x200F;workers؛
+- &#x200F;GPU usage؛
+- &#x200F;Image decoding؛
+- &#x200F;Augmentation سنگین.
 
-## Loss NaN شد
+## &#x200F;Loss NaN شد
 
 ممکن است:
 
-- Label خراب؛
-- Learning Rate نامناسب؛
-- Numeric instability؛
-- Data مشکل‌دار
+- &#x200F;Label خراب؛
+- &#x200F;Learning Rate نامناسب؛
+- &#x200F;Numeric instability؛
+- &#x200F;Data مشکل‌دار
 
 باشد.
 
-Dataset Audit را اجرا کنید.
+&#x200F;Dataset Audit را اجرا کنید.
 
-## mAP بالا ولی خروجی واقعی بد است
+## &#x200F;mAP بالا ولی خروجی واقعی بد است
 
 احتمال‌ها:
 
-- Leakage؛
-- Validation آسان؛
-- Domain Shift؛
-- Metric متوسط Classها مشکل یک Class را پنهان کرده؛
-- Threshold Deployment با Validation فرق دارد.
+- &#x200F;Leakage؛
+- &#x200F;Validation آسان؛
+- &#x200F;Domain Shift؛
+- &#x200F;Metric متوسط Classها مشکل یک Class را پنهان کرده؛
+- &#x200F;Threshold Deployment با Validation فرق دارد.
 
-## Train خوب، Val بد
+## &#x200F;Train خوب، Val بد
 
-Overfitting محتمل است.
+&#x200F;Overfitting محتمل است.
 
 راهکار:
 
-- Data بیشتر؛
-- Augmentation مناسب؛
-- Model کوچک‌تر؛
-- Early Stopping؛
-- Regularization؛
-- Leakage Check؛
-- Label Check.
+- &#x200F;Data بیشتر؛
+- &#x200F;Augmentation مناسب؛
+- &#x200F;Model کوچک‌تر؛
+- &#x200F;Early Stopping؛
+- &#x200F;Regularization؛
+- &#x200F;Leakage Check؛
+- &#x200F;Label Check.
 
-## Boxها جابه‌جا هستند
+## &#x200F;Boxها جابه‌جا هستند
 
 احتمال:
 
-- Format اشتباه؛
-- Pixel vs Normalized confusion؛
-- Width/Height جابه‌جا؛
-- Resize بدون Transform Label.
+- &#x200F;Format اشتباه؛
+- &#x200F;Pixel vs Normalized confusion؛
+- &#x200F;Width/Height جابه‌جا؛
+- &#x200F;Resize بدون Transform Label.
 
-## Class ID اشتباه
+## &#x200F;Class ID اشتباه
 
 مثلا:
 
@@ -2203,7 +2209,7 @@ names:
 
 ولی Labelها با Mapping دیگری ساخته شده‌اند.
 
-## Model فقط Background را یاد گرفته
+## &#x200F;Model فقط Background را یاد گرفته
 
 اگر Classها همیشه با Background خاص همراه باشند، Shortcut Learning ممکن است رخ دهد.
 
