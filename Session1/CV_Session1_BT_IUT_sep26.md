@@ -1,4 +1,4 @@
-> به نام خدایی که نسبت محیط به قطر را دقیق می‌داند.
+> به نام خدایی که نسبت محیط به قطر را دقیق می‌داند.🍀❤️
 
 # جلسه اول — مقدمه‌ای بر بینایی ماشین (Computer Vision)
 ## از پیکسل و لبه تا شبکه عصبی، یادگیری عمیق و YOLO
@@ -546,6 +546,10 @@ Object-level representation
 <p align="center">
   <img src="images/06-neural-network-layers.jpg" alt="banner" width="100%">
 </p>
+
+
+> [!TIP]
+> جزوه آشنایی با هوش مصنوعی [دکتر صفایانی](https://github.com/safayani/Introduction_to_AI) رو جهت مطالعه بیشتر، داشته باشین.
 
 ---
 
